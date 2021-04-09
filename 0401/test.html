@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  hello World
+  <script>
+    // let news = {};
+    // news.title = "속보 김정은 사망.";
+    // news.content = "김정은 미사일 날리다 자폭해서 사망.";
+    // console.log(news);
+    //
+    // let news2 = {
+    //   title: "속보 김정은 사망.",
+    //   content: "김정은 미사일 날리다 자폭해서 사망."
+    // }
+    // console.log(news2);
+    //
+    // console.log(news.title);
+    // console.log(news.content);
+
+    // let arr1 = [1, 2, 3];
+    // console.log(arr1);
+    // console.log(arr1[0], arr1[1], arr1[2]);
+    // arr1[0] = 10;
+    // arr1[1] = 20;
+    // console.log(arr1[0], arr1[1], arr1[2]);
+    //
+    // let human1 = {};
+    // human1.age = 20;
+    // human1.height = "180cm"
+    // human1.name = "john"
+    //
+    // let human2 = {};
+    // human2.age = 30
+    // human2.height = "160cm"
+    // human2.name = "jane"
+    //
+    // console.log(human1, human2);
+    // console.log("-------------------------");
+    //
+    // let humanArray = [];
+    // humanArray[0] = {
+    //   age: 20,
+    //   height: "180cm",
+    //   name: "john",
+    // }
+    // humanArray[1] = {
+    //   age: 30,
+    //   height: "160cm",
+    //   name: "jane",
+    // }
+    //
+    // console.log(humanArray[0], humanArray[1]);
+    // console.log(humanArray);
+
+    // let human3 = {};
+    // human3.age = 25
+    // human3.height = "170cm"
+    // human3.name = "jack"
+
+    // humanArray[2] = {
+    //   age: 25,
+    //   height: "170cm",
+    //   name: "jack",
+    // }
+
+
+    // for (let i = 0; i < 101; i++) {
+    //   if (i % 2 == 1) {console.log(i);
+    //   }
+    // };
+    //
+    // console.log("--------------------------------------");
+    //
+    // for (let j = 1; j < 101; j+=2) {
+    //   console.log(j);
+    // };
+    //
+    // console.log("--------------------------------------");
+    // for (let h = 0; h < 100; h++) {
+    //   h++;
+    //   console.log(h);
+    // };
+
+    let star = "";
+
+    for (let i = 0; i < 9; i++) {
+      i++
+      for (let j = 0; j < i; j++) {
+        star += "*"
+      }
+      console.log(star);
+      star = ""
+    }
+    console.log("--------------------");
+
+
+    let star2 = "";
+
+    for (let i = 1; i < 10; i = i + 2) {
+      for (let j = 0; j < i; j++) {
+        star2 += "*"
+      }
+      if (star2.length < 9) {
+        console.log(star2);
+        star2 = ""
+      } else {
+        console.log(star2);
+        for (let k = 1; k < 10; k = k + 2) {
+          star2 = star2 - "*"
+        }
+        console.log(star2);
+      }
+    }
+    console.log("--------------------------");
+
+    let star3 = "";
+    for (let i = 9; i > 0; i = i - 2) {
+      for (let j = 0; j < i; j++) {
+        star3 += "*"
+      }
+      console.log(star3);
+      star3 = ""
+    }
+    console.log("--------------------------");
+
+    let star4 = "";
+    let maxLen = 10;
+    for (let i = 1; i < maxLen; i = i + 2) {
+      for (let j = 0; j < i; j++) {
+        star4 += "*"
+      }
+      console.log(star4);
+      if (star4.length == maxLen - 1) {
+        star4 = ""
+        for (let h = maxLen - 1; h > 0; h--) {
+          h--;
+          for (let k = 1; k < h; k++) {
+            star4 += "*"
+          }
+          console.log(star4);
+          star4 = ""
+        }
+      } else {
+        star4 = ""
+      }
+    }
+    console.log("--------------------------");
+
+
+    let star5 = "";
+    for (let i = 0; i < 10; i++) {
+      if (i <5){
+        star5 += "*"
+      }
+      if (5<=i){
+          star5 = star5.substr(0,star5.length-1)
+      }console.log(star5);
+    }
+
+
+
+
+</script>
+</body>
+
+</html>
