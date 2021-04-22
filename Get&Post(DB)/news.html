@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>news page</title>
+  </head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+제목을 입력해주세요.<br>
+<input type="text" name="" value="" id="title"><br>
+내용을 입력해주세요.<br>
+<textarea name="name" rows="8" cols="80"value="" id="content" ></textarea><br>
+<input type="button" name="" value="게시하기" id="updatebtn"><br>
+
+
+입력 정보를 확인하고 싶으시면 숫자를 입력하세요.<br>
+<input type="text" name="" value="" id="newsNo"><br>
+<input type="button" name="" value="select" id="selectbtn"><br>
+
+입력 정보를 확인하고 싶으시면 이름을 입력하세요.<br>
+<input type="text" name="" value="" id="newsname"><br>
+<input type="button" name="" value="select" id="selectbtn2"><br>
+</body>
+
+<span id ="resultArea"></span>
+
+<script type="text/javascript">
+$("#updatebtn").click(function(){
+console.log($("#title").val(), $("#content").val());
+    $.ajax({
+        type:"POST",
+        url:`/news`,
+        data : {
+        title : $("#title").val(),
+        content : $("#content").val(),
+        },
+        success: function(res){
+        console.log(res);
+        if (res == 'not ok'){
+          alert("Failed..")
+        }
+        else if (res =='ok') {
+          alert("successed!!")
+
+        }
+        },
+    });
+});
+
+$("#selectbtn").click(function(){
+  console.log($("#newsNo").val())
+    $.ajax({
+        type:"GET",
+        url:`/testnews`,
+        data : {
+          no: $("#newsNo").val()
+        },
+        success: function(res){
+          $("#resultArea").append(`${res[0].No} / ${res[0].title}/${res[0].content}<br>`)
+
+},
+        // error: function(res) {
+        // }
+    });
+});
+
+$("#selectbtn2").click(function(){
+    $.ajax({
+        type:"GET",
+        url:`/testnews2?name=${$("#newsname").val()}`,
+        data : {
+          // name: $("#newsname").val()
+        },
+        success: function(res){
+          $("#resultArea").append(`${res[0].No} / ${res[0].title}/${res[0].content}<br>`)
+        },
+        error: function(res) {
+        }
+    });
+});
+
+
+</script>
+
+</html>
