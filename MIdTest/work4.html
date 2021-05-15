@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  문제 4
+  <br>
+  학번을 입력해주세요.
+  <br>
+  <input type="text" name="" value="" id="studentNo">
+  <br>
+  이름을 입력해주세요.
+  <br>
+  <input type="text" name="" value="" id="studentName">
+  <br>
+  <input type="button" name="" value="입력" id="insert">
+
+
+  <script type="text/javascript">
+    $("#insert").click(function() {
+      $.ajax({
+        type: "POST",
+        url: `/insertStudent`,
+        data: {
+          studentNo: $("#studentNo").val(),
+          studentName: $("#studentName").val(),
+        },
+        success: function(res) {
+          if (res == 'not ok') {
+            alert("Failed..")
+          } else if (res == 'ok') {
+            alert("successed!!")
+          }
+        },
+      });
+    });
+  </script>
+</body>
+
+</html>

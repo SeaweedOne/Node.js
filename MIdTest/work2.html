@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  문제 2
+  <br>
+  숫자를 선택하세요.
+  <br>
+  1<input type="radio" name="group1" value="">
+  2<input type="radio" name="group1" value="">
+  3<input type="radio" name="group1" value="">
+  4<input type="radio" name="group1" value="">
+  5<input type="radio" name="group1" value="">
+  6<input type="radio" name="group1" value="">
+  7<input type="radio" name="group1" value="">
+  8<input type="radio" name="group1" value="">
+  9<input type="radio" name="group1" value="">
+  10<input type="radio" name="group1" value="">
+  <br>
+  1<input type="radio" name="group2" value="">
+  2<input type="radio" name="group2" value="">
+  3<input type="radio" name="group2" value="">
+  4<input type="radio" name="group2" value="">
+  5<input type="radio" name="group2" value="">
+  6<input type="radio" name="group2" value="">
+  7<input type="radio" name="group2" value="">
+  8<input type="radio" name="group2" value="">
+  9<input type="radio" name="group2" value="">
+  10<input type="radio" name="group2" value="">
+  <br>
+  1<input type="radio" name="group3" value="">
+  2<input type="radio" name="group3" value="">
+  3<input type="radio" name="group3" value="">
+  4<input type="radio" name="group3" value="">
+  5<input type="radio" name="group3" value="">
+  6<input type="radio" name="group3" value="">
+  7<input type="radio" name="group3" value="">
+  8<input type="radio" name="group3" value="">
+  9<input type="radio" name="group3" value="">
+  10<input type="radio" name="group3" value="">
+  <br>
+  <input type="button" name="" value="출력" id="print">
+
+  <script type="text/javascript">
+    $("#print").click(function() {
+      let group1 = $('input[name="group1"]');
+      let group2 = $('input[name="group2"]');
+      let group3 = $('input[name="group3"]');
+      let checkedVal1;
+      let checkedVal2;
+      let checkedVal3;
+      let valArray = [];
+      //각각 그룹에 새로운 숫자가 추가되더라도 사용할 수 있도록 각 그룹마다 개별 for문을 사용하였습니다.
+      for (let i = 0; i < group1.length; i++) {
+        if (group1[i].checked == true) {
+          checkedVal1 = i + 1;
+          break;
+        }
+      }
+      for (let i = 0; i < group2.length; i++) {
+        if (group2[i].checked == true) {
+          checkedVal2 = i + 1;
+          break;
+        }
+      }
+      for (let i = 0; i < group3.length; i++) {
+        if (group3[i].checked == true) {
+          checkedVal3 = i + 1;
+          break;
+        }
+      }
+      valArray.push(checkedVal1);
+      valArray.push(checkedVal2);
+      valArray.push(checkedVal3);
+
+      min = Math.min.apply(null, valArray);
+      max = Math.max.apply(null, valArray);
+      let result = max ** min
+
+      console.log(result);
+
+
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <body>
+    문제 1
+    <br>
+    숫자를 입력하세요.
+    <br>
+    <input type="text" name="" value="" id="num1">
+    <br>
+    <input type="text" name="" value="" id="num2">
+    <br>
+    <input type="button" name="" value="계산" id="calc">
+    <br>
+
+    <script type="text/javascript">
+      $("#calc").click(function() {
+        let num1 = parseInt($("#num1").val());
+        let num2 = parseInt($("#num2").val());
+
+        let resultSum;
+        let resultMin;
+        let resultMul;
+        let resultDiv;
+
+        if(num1 > num2){ //num1,mun2값을 비교해 큰수에서 작은수를 나눌 수 있도록 함.
+          resultSum = num1 + num2;
+          resultMin =  Math.abs(num1 - num2);//값의 차는 절대값으로 처리
+          resultMul = num1 * num2;
+          resultDiv = num1 / num2;
+        } else {
+          resultSum = num2 + num1;
+          resultMin = Math.abs(num2 - num1); //값의 차는 절대값으로 처리
+          resultMul = num2 * num1;
+          resultDiv = num2 / num1;
+        }
+
+
+        console.log(`더하기 : ${resultSum}, 빼기 : ${resultMin}, 곱하기 : ${resultMul}, 나누기 : ${resultDiv}`);
+      });
+
+
+    </script>
+  </body>
+</html>
