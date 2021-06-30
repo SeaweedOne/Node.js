@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  학생관리프로그램
+  <br>
+  <form>
+    <select name="score" id="score">
+      <option value="none">=== 선택 ===</option>
+      <option value="allScore" selected>전체수석</option>
+      <option value="javascript">JAVASCRIPT최고득점</option>
+      <option value="python">PYTHON최고득점</option>
+      <option value="java">JAVA최고득점</option>
+    </select>
+    <button type="button" name="button" id="selectBtn"> 확인</button>
+    <br>
+    <div id="resultArea"></div>
+    <br>
+    <button type="button" name="button" id="insertBtn">입력페이지</button>
+    <button type="button" name="button" id="listBtn">목록페이지</button>
+
+
+    <script type="text/javascript">
+
+      $("#selectBtn").click(function(){
+          let option = $("#score").val();
+          console.log(option);
+
+          if ($("#score").val()=='allScore') {
+            $("#resultArea").html("")
+            $.ajax({
+              type: "get",
+              url: `/totalScore`,
+              data: {
+                option : option
+              },
+              success: function(res) {
+                for (let i = 0; i < res.length; i++) {
+                  $("#resultArea").append(`${res[i].no} / 학번 : ${res[i].studentNo} / 이름 : ${res[i].studentName} /
+                  javascript : ${res[i].javascript} / python : ${res[i].python} / java : ${res[i].java} <br>`)
+                }
+              },
+            });
+          }else if (($("#score").val()=='javascript') || ($("#score").val()=='python') || ($("#score").val()=='java')){
+            $("#resultArea").html("")
+            $.ajax({
+              type: "get",
+              url: `/selectScore`,
+              data: {
+                option : option
+              },
+              success: function(res) {
+                for (let i = 0; i < res.length; i++) {
+                  $("#resultArea").append(`${res[i].no} / 학번 : ${res[i].studentNo} / 이름 : ${res[i].studentName} /
+                  javascript : ${res[i].javascript} / python : ${res[i].python} / java : ${res[i].java} <br>`)
+                }
+              },
+            });
+          }
+        });
+
+
+
+
+      $("#insertBtn").click(function() {
+        location.href = "insertForm"
+      });
+
+      $("#listBtn").click(function() {
+        location.href = "listForm"
+      });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  학생 입력<br>
+  학번 : <input type="text" name="" value="" id="studentNo"><br>
+  이름 : <input type="text" name="" value="" id="studentName"><br>
+  javascript : <input type="text" name="" value="" id="javascript"><br>
+  python : <input type="text" name="" value="" id="python"><br>
+  java : <input type="text" name="" value="" id="java"><br>
+
+  <input type="button" name="" value="입력" id="isnert">
+  <input type="button" name="" value="메인페이지" id="main">
+  <input type="button" name="" value="목록페이지" id="list">
+
+  <script type="text/javascript">
+    $("#isnert").click(function() {
+      console.log($("#studentNo").val(), $("#studentName").val());
+      $.ajax({
+        type: "POST",
+        url: `/insert`,
+        data: {
+          studentNo: $("#studentNo").val(),
+          studentName: $("#studentName").val(),
+          javascript: $("#javascript").val(),
+          python: $("#python").val(),
+          java: $("#java").val(),
+        },
+        success: function(res) {
+          console.log(res);
+          alert(res)
+          location.href = "listForm"
+        },
+      });
+    });
+
+    $("#main").click(function() {
+      location.href = "app"
+    });
+
+    $("#list").click(function() {
+      location.href = "listForm"
+    });
+
+  </script>
+</body>
+
+</html>

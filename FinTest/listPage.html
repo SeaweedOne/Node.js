@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  학생 목록
+  <div id="resultArea"></div>
+  <input type="button" name="" value="메인페이지" id="back">
+
+  <script type="text/javascript">
+    $.ajax({
+      type: "get",
+      url: `/list`,
+      data: {},
+      success: function(res) {
+        console.log(res);
+        for (let i = 0; i < res.length; i++) {
+          $("#resultArea").append(`<div id="no${res[i].no}">${res[i].no} / 학번 : ${res[i].studentNo} / 이름 : ${res[i].studentName} / javascript : ${res[i].javascript} / python : ${res[i].python} / java : ${res[i].java}
+           <input type="button" name="" value="수정" onclick="updateFunc(${res[i].no})">   <input type="button" name="" value="삭제" onclick="deleteFunc(${res[i].no})"></div>`);
+        }
+      },
+    });
+
+    $("#back").click(function() {
+      location.href = "app"
+    });
+
+
+    function deleteFunc(num) {
+      $.ajax({
+        type: "post",
+        url: `/delete`,
+        data: {
+          no: num
+        },
+        success: function(res) {
+          if (res == 'ok') {
+            let spanId = `#no${num}`
+            $(spanId).remove();
+            alert("삭제되었습니다.")
+          } else {
+            alert("삭제.")
+          }
+        },
+      });
+    }
+
+    function updateFunc(num) {
+      location.href = `update?${num}`
+    }
+  </script>
+</body>
+
+</html>
